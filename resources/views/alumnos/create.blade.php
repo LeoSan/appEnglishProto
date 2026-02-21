@@ -57,17 +57,6 @@
                                 </select>
                             </div>
                             
-                            <div>
-                                <label for="profesor_id" class="block text-sm font-medium text-gray-700">Profesor Asignado</label>
-                                <select id="profesor_id" name="profesor_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-gray-50 focus:bg-white transition">
-                                    <option value="">-- Sin Profesor Asignado --</option>
-                                    @foreach($profesores as $profesor)
-                                        <option value="{{ $profesor->id }}" {{ old('profesor_id') == $profesor->id ? 'selected' : '' }}>
-                                            {{ $profesor->nombre }} {{ $profesor->apellidos }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
 
                             <!-- Información Personal -->
                             <div class="md:col-span-2 mt-4">
@@ -123,6 +112,32 @@
                             <div class="md:col-span-2">
                                 <label for="direccion" class="block text-sm font-medium text-gray-700">Dirección</label>
                                 <textarea name="direccion" id="direccion" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-gray-50 focus:bg-white transition">{{ old('direccion') }}</textarea>
+                            </div>
+
+                            <!-- Inscripción a Materias -->
+                            <div class="md:col-span-2 mt-4">
+                                <h3 class="text-lg font-semibold text-gray-700 border-b border-gray-200 pb-2 flex items-center">
+                                    <svg class="h-5 w-5 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                                    Gestión de Inscripción a Materias
+                                </h3>
+                                
+                                <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    @forelse($materias as $materia)
+                                        <label class="flex items-start bg-slate-50 p-3 rounded-lg border border-slate-200 hover:border-indigo-300 transition cursor-pointer select-none">
+                                            <div class="flex items-center h-5">
+                                                <input name="materias[]" type="checkbox" value="{{ $materia->id }}" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded cursor-pointer" {{ is_array(old('materias')) && in_array($materia->id, old('materias')) ? 'checked' : '' }}>
+                                            </div>
+                                            <div class="ml-3 text-sm flex-1">
+                                                <div class="font-bold text-slate-700 leading-tight">{{ $materia->nombre }}</div>
+                                                <p class="text-slate-500 text-xs mt-0.5"><span class="uppercase font-semibold text-indigo-600 mr-2">{{ $materia->nivel }}</span> {{ $materia->horarios->count() }} hrs</p>
+                                            </div>
+                                        </label>
+                                    @empty
+                                        <div class="col-span-full shadow-sm text-center py-6 bg-slate-50 rounded-lg border border-slate-200 text-slate-500 text-sm italic">
+                                            No hay materias activas disponibles.
+                                        </div>
+                                    @endforelse
+                                </div>
                             </div>
 
                             <div class="md:col-span-2 mt-2 bg-gray-50 p-4 rounded border border-gray-200">

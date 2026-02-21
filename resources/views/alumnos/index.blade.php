@@ -37,6 +37,7 @@
                                 <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Matrícula</th>
                                 <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Nombre</th>
                                 <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Email</th>
+                                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Materias</th>
                                 <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Nivel</th>
                                 <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Estado</th>
                                 <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-50 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">Acciones</th>
@@ -53,6 +54,11 @@
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->user->email ?? 'N/A' }}</p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                    <span class="bg-indigo-50 text-indigo-700 font-bold py-1 px-2 rounded-lg text-xs border border-indigo-100">
+                                        {{ $alumno->materias->count() }} Materias
+                                    </span>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                     <span class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">

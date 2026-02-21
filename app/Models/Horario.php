@@ -4,23 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Clase extends Model
+class Horario extends Model
 {
     protected $fillable = [
         'materia_id',
-        'nivel',
-        'etiqueta',
-        'titulo',
-        'contenido',
+        'dia_semana',
+        'hora_inicio',
+        'hora_fin',
     ];
 
     public function materia()
     {
         return $this->belongsTo(Materia::class);
-    }
-
-    public function multimedias()
-    {
-        return $this->hasMany(Multimedia::class);
     }
 }

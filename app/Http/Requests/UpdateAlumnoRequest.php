@@ -29,13 +29,15 @@ class UpdateAlumnoRequest extends FormRequest
             'matricula' => 'required|string|unique:alumnos,matricula,' . ($alumno->id ?? ''),
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
+            'estado' => 'required|in:activo,inactivo,suspendido',
+            'materias' => 'nullable|array',
+            'materias.*' => 'exists:materias,id',
             'nivel' => 'required|in:a1,a2,b1,b2,c1,c2',
             'genero' => 'nullable|string|max:20',
             'fecha_nacimiento' => 'nullable|date',
             'telefono' => 'nullable|string|max:20',
             'direccion' => 'nullable|string',
             'fecha_inscripcion' => 'nullable|date',
-            'profesor_id' => 'nullable|exists:profesors,id',
             'activo' => 'boolean',
         ];
     }

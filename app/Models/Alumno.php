@@ -8,7 +8,6 @@ class Alumno extends Model
 {
     protected $fillable = [
         'user_id',
-        'profesor_id',
         'matricula',
         'nombre',
         'apellidos',
@@ -26,8 +25,8 @@ class Alumno extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function profesor()
+    public function materias()
     {
-        return $this->belongsTo(Profesor::class);
+        return $this->belongsToMany(Materia::class);
     }
 }

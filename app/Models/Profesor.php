@@ -25,13 +25,13 @@ class Profesor extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function alumnos()
+    public function materias()
     {
-        return $this->hasMany(Alumno::class);
+        return $this->hasMany(Materia::class);
     }
 
     public function clases()
     {
-        return $this->hasMany(Clase::class);
+        return $this->hasManyThrough(Clase::class, Materia::class);
     }
 }

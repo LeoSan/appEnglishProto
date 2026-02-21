@@ -5,6 +5,7 @@ use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\ClaseController;
 use App\Http\Controllers\MultimediaController;
+use App\Http\Controllers\MateriaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,6 +30,9 @@ Route::middleware('auth')->group(function () {
     
     // Rutas para las clases (sólo profesor por ahora)
     Route::resource('clases', ClaseController::class)->middleware('role:admin,profesor');
+    
+    // Rutas para materias
+    Route::resource('materias', MateriaController::class)->middleware('role:admin,profesor');
     
     // Rutas para multimedia (sólo profesor por ahora, él las crea y gestiona)
     Route::resource('multimedia', MultimediaController::class)->middleware('role:admin,profesor');
