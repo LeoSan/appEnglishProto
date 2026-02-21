@@ -37,11 +37,11 @@
         </style>
 
         <!-- New English Academy Background Image 1 (Header1) -->
-        <div class="absolute inset-0  bg-center animate-bg-1" style="background-image: url('{{ asset('images/Header1.jpg') }}'); filter: brightness(70%) contrast(1.1); transform-origin: center;"></div>
+        <div class="absolute inset-0 bg-center animate-bg-1" style="background-image: url('{{ asset('images/Header1.jpg') }}'); filter: brightness(70%) contrast(1.1); transform-origin: center;"></div>
         
         <!-- New English Academy Background Image 2 (Header2) -->
         <!-- Placed over the first one, but starts invisible because of animation delay -->
-        <div class="absolute inset-0  bg-center animate-bg-2 opacity-0" style="background-image: url('{{ asset('images/Header2.jpg') }}'); filter: brightness(70%) contrast(1.1); transform-origin: center;"></div>
+        <div class="absolute inset-0 bg-center animate-bg-2 opacity-0" style="background-image: url('{{ asset('images/Header2.jpg') }}'); filter: brightness(70%) contrast(1.1); transform-origin: center;"></div>
 
         <!-- Vignette and bottom fade for text readability -->
         <div class="absolute inset-0 bg-black/20 w-full h-full mix-blend-multiply"></div>
@@ -52,17 +52,11 @@
     <!-- Header Navigation -->
     <header class="relative z-20 flex items-center justify-between px-6 lg:px-12 py-8 w-full mx-auto">
         <!-- Brand Logo Box -->
-        <div class="flex-shrink-0">
-            <!-- Emulating the broken white border from the image -->
-            <div class="relative border-[3px] border-r-0 border-white px-3 py-1 flex items-center">
-                <span class="text-3xl lg:text-4xl font-black tracking-wider uppercase leading-none mt-1">English Academy</span>
-                <!-- Right border top stub -->
-                <div class="absolute top-0 right-0 w-[3px] h-3 bg-white"></div>
-                <!-- Extend bottom border to right -->
-                <div class="absolute -bottom-[3px] -right-8 w-8 h-[3px] bg-white"></div>
-            </div>
+        <div class="flex-shrink-0 flex items-center">
+            <a href="/">
+                <img src="{{ asset('images/logo2.png') }}" alt="The Palace of Language" class="h-40 w-auto rounded-md shadow-lg transition-transform hover:scale-105" />
+            </a>
         </div>
-
         <!-- Desktop Navigation -->
         <nav class="hidden lg:flex items-center space-x-8 text-[15px] font-medium tracking-wide">
             <a href="#" class="hover:text-red-400 flex items-center gap-1.5 transition-colors">
